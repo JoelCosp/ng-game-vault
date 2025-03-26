@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors');
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const Videogame = require("./models/Videogame");
@@ -6,7 +7,7 @@ const Videogame = require("./models/Videogame");
 // Initialize the app
 const app = express();
 app.use(bodyParser.json());
-
+app.use(cors());
 app.use(express.json()); // IMPORTANTE para poder usar post
 
 // MongoDB connection string

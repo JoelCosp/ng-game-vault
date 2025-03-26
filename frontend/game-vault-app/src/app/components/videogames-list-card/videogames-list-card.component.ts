@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
+import { Videogame } from '../../models/Videogame';
 @Component({
   selector: 'app-videogames-list-card',
   imports: [],
@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './videogames-list-card.component.css'
 })
 export class VideogamesListCardComponent {
-
+  @Input() videogame!: Videogame;
 }

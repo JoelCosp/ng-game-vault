@@ -1,0 +1,8 @@
+.videogame-card {
+    clip-path: polygon(77% 0, 100% 24%, 100% 100%, 0 100%, 0 0);
+}
+
+.videogame-card:hover .info-container {
+    background-color: blue;
+    transition: 0.2s;
+}

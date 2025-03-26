@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { VideogamesService } from '../../services/videogames.service';
 import { Videogame } from '../../models/Videogame';
+import { CommonModule } from '@angular/common';
+import { VideogamesListCardComponent } from '../videogames-list-card/videogames-list-card.component';
 
 @Component({
   selector: 'app-videogames-list',
-  imports: [],
+  imports: [CommonModule, VideogamesListCardComponent],
   templateUrl: './videogames-list.component.html',
   styleUrl: './videogames-list.component.css'
 })

@@ -3,3 +3,7 @@
 @import "flowbite/src/themes/default";
 @plugin "flowbite/plugin";
 @plugin "flowbite/plugin";
+
+html {
+    background-color: #131515;
+}

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { VideogamesListComponent } from '../../components/videogames-list/videogames-list.component';
 
 @Component({
   selector: 'app-catalog',
-  imports: [],
+  imports: [VideogamesListComponent],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.css'
 })

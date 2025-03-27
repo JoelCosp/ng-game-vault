@@ -1,21 +1,16 @@
-<div class="videogame-card lg:w-4/4 md:w-4/2 p-4 w-full hover:cursor-pointer">
-    <a class="block relative h-48 overflow-hidden">
-      <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://as2.ftcdn.net/v2/jpg/07/82/27/87/1000_F_782278727_Z2vtJzfzNFKoE550lZXNOeDKMW61mXFK.jpg">
-    </a>
-    <div class="info-container pt-4">
-      <div class="px-4">
-          <h3 class="text-gray-500 text-xs tracking-widest title-font mb-3">{{ videogame.genre[0] }}</h3>
-        <div class="flex items-center mb-3">
-          <svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-              <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-          </svg>
-          <h3 class="text-gray-500 text-xs tracking-widest title-font">{{ videogame.rating }}</h3>
-        </div>
-        <div class="flex justify-between">
-          <h2 class="text-gray-900 title-font text-lg font-medium mb-1">{{ videogame.title }}</h2>
-          <h2 class="text-gray-900 title-font text-lg font-medium mb-1">{{ videogame.price }} €</h2>
-        </div>
-      </div>
-      <button>Ver más</button>
-    </div>
+<div class="videogame-card w-full hover:cursor-pointer text-white bg-[#1A1A1D] flex flex-col h-full">
+  <a class="block relative h-48 overflow-hidden">
+    <img alt="ecommerce" class="object-cover object-center w-full h-full block rounded-t-sm" [src]="videogame.image">
+  </a>
+  <div class="info-container pt-4 flex-grow min-h-[100px]">
+    <span class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-gray-700 dark:text-gray-300">{{ videogame.genre[0] }}</span>
+    <h2 class="title-font text-lg font-medium my-1 break-words">{{ videogame.title }}</h2>
+    <p class="text-sm">{{ videogame.description.substring(0, 50) }}{{ videogame.description.length > 50 ? "..." : "" }}</p>
   </div>
+  <div class="flex justify-between items-center mt-5">
+    <div class="inline-block">
+      <span class="title-font text-lg font-medium bg-[#00a3cc] py-2 px-4 text-center inline-block w-auto rounded-sm">{{ videogame.price }} €</span>
+    </div>
+    <button class="title-font text-lg font-medium py-2 px-4 text-center inline-block w-auto hover:cursor-pointer hover:text-[#00a3cc]" [routerLink]="['/catalog/details', videogame.id]">Ver más <span>&#8594;</span></button>
+  </div>
+</div>

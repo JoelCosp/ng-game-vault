@@ -3,6 +3,7 @@ export interface Genre {
 }
 
 export interface Videogame {
+    id: Number,
     title: String,
     developer: String,
     genre: String[],

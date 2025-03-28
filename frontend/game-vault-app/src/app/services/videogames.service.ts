@@ -9,11 +9,16 @@ import { Observable } from 'rxjs';
 export class VideogamesService {
 
   private apiUrl = "http://localhost:3000/videogames";
+  private apiVideogameByID = "http://localhost:3000/videogame";
 
   constructor(private http: HttpClient) {}
 
   getVideogames(): Observable<Videogame[]> {
     return this.http.get<Videogame[]>(this.apiUrl);
+  }
+
+  getVideogameById(id: string): Observable<Videogame> {
+    return this.http.get<Videogame>(`${this.apiVideogameByID}/${id}`);
   }
 
 }

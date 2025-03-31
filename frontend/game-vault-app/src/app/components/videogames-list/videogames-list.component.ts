@@ -29,7 +29,9 @@ export class VideogamesListComponent implements OnInit{
     this.videogamesService.getVideogames().subscribe((videogame) => {
       this.videogames = videogame;
       this.filteredVideogames = videogame;
+      this.orderNames();
     })
+
   }
 
   applyFilters(): void {
@@ -49,5 +51,15 @@ export class VideogamesListComponent implements OnInit{
 
       return isValid;
     });
+  }
+
+  orderNames() {
+    const orderedTitles = this.videogames.sort((a, b) => {
+      if (a.title < b.title) return -1;  // Si 'a.name' es menor, 'a' va antes.
+      if (a.title > b.title) return 1;   // Si 'a.name' es mayor, 'b' va antes.
+      return 0;                        // Si son iguales, no cambia el orden.
+    });
+
+    console.log("---> ORDENADOS: " + JSON.stringify(orderedTitles));
   }
 }

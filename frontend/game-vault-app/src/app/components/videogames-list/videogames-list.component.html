@@ -1,9 +1,27 @@
 <section class="text-gray-600 body-font">
-    <div class="container px-5 py-24 mx-auto">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-        
-        <app-videogames-list-card *ngFor="let videogame of videogames" [videogame]="videogame"></app-videogames-list-card>
-        
-      </div>
+  <div class="container px-5 py-24 mx-auto">
+    <!-- Filtros -->
+    <select [(ngModel)]="priceFilter" (ngModelChange)="applyFilters()">
+      <option value="">Todos</option>
+      <option value="low">Menor a 30€</option>
+      <option value="high">Mayor a 30€</option>
+    </select>
+
+    <!-- Campo de búsqueda -->
+    <input 
+      type="text" 
+      [(ngModel)]="searchText" 
+      (ngModelChange)="applyFilters()" 
+      placeholder="Buscar por nombre..." 
+      class="border p-2 rounded mt-4" 
+    />
+
+    <!-- Lista de videojuegos filtrados -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      <app-videogames-list-card
+        *ngFor="let videogame of filteredVideogames"
+        [videogame]="videogame">
+      </app-videogames-list-card>
     </div>
-  </section>
+  </div>
+</section>

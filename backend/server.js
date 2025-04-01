@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const Videogame = require("./models/Videogame");
+const { ObjectId } = mongoose.Types;
 
 // Initialize the app
 const app = express();
@@ -47,9 +48,31 @@ app.post("/videogames", async (req, res) => {
 
 });
 
-// Update user
-
 // Delete
+app.delete('/videogame/:id', async (req, res) => {
+  const id = req.params.id;
+
+  if (!ObjectId.isValid(id)) {
+    return res.status(400).send('Invalid ID format');
+  }
+
+  try {
+    const result = await Videogame.deleteOne({ _id: new ObjectId(id) });
+
+    if (result.deletedCount === 1) {
+      res.status(200).send('Videogame deleted');
+    } else {
+      res.status(404).send('Videogame not found');
+    }
+  } catch (err) {
+    console.error('Error deleting videogame:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+
+
+// Update user
 
 // Connect to MongoDB
 mongoose

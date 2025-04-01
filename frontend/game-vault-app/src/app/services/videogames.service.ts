@@ -21,4 +21,8 @@ export class VideogamesService {
     return this.http.get<Videogame>(`${this.apiVideogameByID}/${id}`);
   }
 
+  deleteVideogame(id: string): Observable<any> {
+    return this.http.delete(`${this.apiVideogameByID}/${id}`, { responseType: 'text' });
+  }
+
 }

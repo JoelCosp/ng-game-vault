@@ -32,7 +32,11 @@ export class TableComponent implements OnInit{
     })
   }
 
-  openModal() {
+  openModal(videogame?: Videogame) {
+    if(videogame)
+    {
+      this.modal.videogame = videogame;
+    }
     this.modal.toggleModal(); // Llama a la función del hijo
   }
 }

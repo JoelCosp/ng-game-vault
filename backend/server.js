@@ -48,6 +48,33 @@ app.post("/videogames", async (req, res) => {
 
 });
 
+// Update user
+app.put('/videogame/:id', async (req, res) => {
+  const id = req.params.id;
+  const { title, release_year, rating, description, price, image, multiplayer } = req.body;
+  try {
+    const existingVideogame = await Videogame.findById(id);
+    if(!existingVideogame)
+    {
+      return res.status(404).json({ message: "El videojuego no existe" });
+    }
+    // El findByIdAndUpdate recibe 3 parametros:
+      // ID del juego que se actualizara
+      // Objeto con lo que se quiere actualizar. Debe tener lo mismo que el req.body
+      // { new: true } ---> Para que la funcion devuelva el documento actualizado y no el original
+    const updatedVideogame = await Videogame.findByIdAndUpdate(
+      id,
+      { title, release_year, rating, description, price, image, multiplayer},
+      { new: true }
+    );
+
+    res.status(200).json(updatedVideogame);
+  } catch(err) {
+    console.log(err)
+    return res.status(500).send(err.stack)
+  }
+});
+
 // Delete
 app.delete('/videogame/:id', async (req, res) => {
   const id = req.params.id;
@@ -72,7 +99,6 @@ app.delete('/videogame/:id', async (req, res) => {
 
 
 
-// Update user
 
 // Connect to MongoDB
 mongoose

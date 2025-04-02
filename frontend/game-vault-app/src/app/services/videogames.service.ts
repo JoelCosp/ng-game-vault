@@ -10,6 +10,7 @@ export class VideogamesService {
 
   private apiUrl = "http://localhost:3000/videogames";
   private apiVideogameByID = "http://localhost:3000/videogame";
+  private apiCreateVideogame = "http://localhost:3000/videogames";
 
   constructor(private http: HttpClient) {}
 
@@ -27,5 +28,9 @@ export class VideogamesService {
 
   updateVideogame(id: string, videogame: Videogame): Observable<any> {
     return this.http.put(`${this.apiVideogameByID}/${id}`, videogame);
+  }
+
+  createVideogame(videogame: any): Observable<any> {
+    return this.http.post<Videogame>(`${this.apiCreateVideogame}`, videogame);
   }
 }

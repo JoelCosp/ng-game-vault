@@ -53,6 +53,5 @@ export class ModalComponent {
             console.error('Error al actualizar el videojuego:', error);
         }
     );
-}
-
+  }
 }

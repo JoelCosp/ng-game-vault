@@ -23,6 +23,7 @@ export class TableComponent implements OnInit{
   ngOnInit(): void {
     this.videogamesService.getVideogames().subscribe((videogame) => {
       this.videogames = videogame;
+      //console.log(videogame);
     })
   }
 

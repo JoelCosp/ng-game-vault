@@ -1,44 +1,59 @@
-<div [ngClass]="isModal ? 'block' : 'hidden'" class="fixed inset-0  bg-opacity-75 flex justify-center items-center">
+<div [ngClass]="isModal ? 'block' : 'hidden'" class="fixed inset-0 bg-opacity-75 flex justify-center items-center">
     <div class="bg-white dark:bg-gray-900 dark:text-gray-100 p-8 rounded-lg shadow-lg max-w-md w-full relative">
         <button (click)="toggleModal()" class="absolute top-2 right-2 text-gray-600 hover:text-gray-300">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-gray-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-            </svg>              
+            </svg>
         </button>
-        <div class="p-4 md:p-5">
-            <form class="space-y-4" action="#">
+        <div *ngIf="videogame" class="p-4 md:p-5">
+            <form class="space-y-4" (ngSubmit)="updateVideogame(videogame._id, videogame)">
                 <div>
                     <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
-                    <input [value]="videogame?.title" type="text" name="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Title" required />
+                    <input [(ngModel)]="videogame.title" type="text" name="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Title" />
+                </div>
+                <div>
+                    <label for="developer" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Developer</label>
+                    <input [(ngModel)]="videogame.developer" type="text" name="developer" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Developer" />
+                </div>
+                <div>
+                    <label for="genre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Genre</label>
+                    <input [(ngModel)]="videogame.genre" type="text" name="genre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Genre" />
+                </div>
+                <div>
+                    <label for="platforms" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Platforms</label>
+                    <input [(ngModel)]="videogame.platforms" type="text" name="platforms" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Platforms" />
                 </div>
                 <div class="flex gap-4">
                     <div>
                         <label for="release_year" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Release year</label>
-                        <input [value]="videogame?.release_year" type="number" name="release_year" placeholder="Release year" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+                        <input [(ngModel)]="videogame.release_year" type="number" name="release_year" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Release year" />
                     </div>
                     <div>
                         <label for="rating" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rating</label>
-                        <input [value]="videogame?.rating" min="0" type="number" name="rating" placeholder="Rating" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+                        <input [(ngModel)]="videogame.rating" type="number" min="0" name="rating" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Rating" />
                     </div>
                     <div>
                         <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
-                        <input [value]="videogame?.price" min="0" type="number" name="price" placeholder="Price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+                        <input [(ngModel)]="videogame.price" type="number" min="0" name="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Price" />
                     </div>
                 </div>
                 <div>
                     <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                    <input [value]="videogame?.description" type="text" name="description" placeholder="Description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+                    <input [(ngModel)]="videogame.description" type="text" name="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Description" />
                 </div>
                 <div>
                     <label for="url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Url</label>
-                    <input [value]="videogame?.image" type="url" name="url" placeholder="Url" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+                    <input [(ngModel)]="videogame.image" type="url" name="image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Image URL" />
                 </div>
                 <div>
                     <label for="multiplayer" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Multiplayer</label>
-                    <input [value]="videogame?.multiplayer" type="checkbox" name="multiplayer" placeholder="Release year" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
+                    <input [(ngModel)]="videogame.multiplayer" type="checkbox" name="multiplayer" />
                 </div>
                 
-                <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Update</button>
+                <!-- Cambié el tipo del botón a "button" para evitar que recargue la página -->
+                <button type="submit" (click)="updateVideogame(videogame._id, videogame)" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Update
+                </button>                
             </form>
         </div>
     </div>

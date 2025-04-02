@@ -3,11 +3,11 @@ export interface Genre {
 }
 
 export interface Videogame {
-    _id: String,
+    _id: string,
     title: String,
     developer: String,
-    genre: String[],
-    platforms: String[],
+    genre: String,
+    platforms: String,
     release_year: Number,
     rating: Number,
     description: String,

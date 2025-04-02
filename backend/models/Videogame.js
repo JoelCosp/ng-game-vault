@@ -11,11 +11,11 @@ const videogameSchema = new mongoose.Schema({
     required: true,
   },
   genre: {
-    type: [String],
+    type: String,
     required: true,
   },
   platforms: {
-    type: [String],
+    type: String,
     required: true,
   },
   release_year: {

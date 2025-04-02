@@ -51,7 +51,7 @@ app.post("/videogames", async (req, res) => {
 // Update user
 app.put('/videogame/:id', async (req, res) => {
   const id = req.params.id;
-  const { title, release_year, rating, description, price, image, multiplayer } = req.body;
+  const { title, developer, genre, platforms, release_year, rating, description, price, image, multiplayer } = req.body;
   try {
     const existingVideogame = await Videogame.findById(id);
     if(!existingVideogame)
@@ -64,7 +64,7 @@ app.put('/videogame/:id', async (req, res) => {
       // { new: true } ---> Para que la funcion devuelva el documento actualizado y no el original
     const updatedVideogame = await Videogame.findByIdAndUpdate(
       id,
-      { title, release_year, rating, description, price, image, multiplayer},
+      { title, developer, genre, platforms, release_year, rating, description, price, image, multiplayer },
       { new: true }
     );
 

@@ -25,7 +25,7 @@ export class VideogamesService {
     return this.http.delete(`${this.apiVideogameByID}/${id}`, { responseType: 'text' });
   }
 
-  updateVideogame(id: string, videogame: any): Observable<any> {
+  updateVideogame(id: string, videogame: Videogame): Observable<any> {
     return this.http.put(`${this.apiVideogameByID}/${id}`, videogame);
   }
 }

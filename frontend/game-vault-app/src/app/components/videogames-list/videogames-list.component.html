@@ -1,20 +1,22 @@
 <section class="text-gray-600 body-font">
   <div class="container px-5 py-24 mx-auto">
-    <!-- Filtros -->
-    <select [(ngModel)]="priceFilter" (ngModelChange)="applyFilters()">
-      <option value="">Todos</option>
-      <option value="low">Menor a 30€</option>
-      <option value="high">Mayor a 30€</option>
-    </select>
+    <div class="w-full flex justify-end items-center my-5 gap-5">
+      <!-- Filtros -->
+      <select [(ngModel)]="priceFilter" (ngModelChange)="applyFilters()" class="bg-transparent text-white rounded-sm">
+        <option value="" class="text-black">All</option>
+        <option value="low" class="text-black">&#8595; 30€</option>
+        <option value="high" class="text-black">&#x2191; 30€</option>
+      </select>
 
-    <!-- Campo de búsqueda -->
-    <input 
-      type="text" 
-      [(ngModel)]="searchText" 
-      (ngModelChange)="applyFilters()" 
-      placeholder="Buscar por nombre..." 
-      class="border p-2 rounded mt-4" 
-    />
+      <!-- Campo de búsqueda -->
+      <input 
+        type="text" 
+        [(ngModel)]="searchText" 
+        (ngModelChange)="applyFilters()" 
+        placeholder="Search..." 
+        class="border p-2 rounded-sm bg-transparent" 
+      />
+    </div>
 
     <!-- Lista de videojuegos filtrados -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">

@@ -4,7 +4,7 @@
         <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" [src]="videogame?.image">
         <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           <div>
-            <span *ngFor="let genre of videogame.genre" class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-gray-700 dark:text-gray-300">{{ genre }}</span>
+            <span class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-gray-700 dark:text-gray-300">{{ videogame?.genre }}</span>
           </div>
           <h2 class="text-sm title-font text-gray-500 tracking-widest my-3">{{ videogame?.developer }}</h2>
           <h1 class="text-white text-3xl title-font font-medium mb-1">{{ videogame?.title }}</h1>
@@ -37,11 +37,7 @@
           <hr class="my-5 opacity-50">
           <p class="leading-relaxed">Release: {{ videogame?.release_year }}</p>
           <hr class="my-5 opacity-50">
-          <p class="leading-relaxed">Platforms: 
-            <span *ngFor="let platform of videogame.platforms; let i = index">
-              {{ platform }}{{ i < videogame.platforms.length - 1 ? ', ' : '' }}
-            </span>
-          </p>
+          <p class="leading-relaxed">Platforms: {{ videogame?.platforms }}</p>
           
           <div class="flex mt-4">
             <button class="flex text-white bg-[#00a3cc] border-0 py-2 px-6 focus:outline-none rounded">{{ videogame?.price }} €</button>
